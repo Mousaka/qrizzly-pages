@@ -4,7 +4,7 @@ import BackendTask exposing (BackendTask)
 import FatalError exposing (FatalError)
 import Head
 import Head.Seo as Seo
-import Html
+import Html.Styled as Html exposing (Html, text)
 import Pages.Url
 import PagesMsg exposing (PagesMsg)
 import Route
@@ -83,6 +83,6 @@ view app shared =
             [ Html.text <| "The message is: " ++ app.data.message
             ]
         , Route.Blog__Slug_ { slug = "hello" }
-            |> Route.link [] [ Html.text "My blog post" ]
+            |> Route.link [] [ text "My blog post" |> Html.toUnstyled ] |> Html.fromUnstyled
         ]
     }

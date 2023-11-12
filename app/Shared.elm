@@ -4,20 +4,22 @@ import BackendTask exposing (BackendTask)
 import Effect exposing (Effect)
 import FatalError exposing (FatalError)
 import Html exposing (Html)
-import Html.Events
+import Html.Styled
+import Html.Styled.Events
 import Pages.Flags
 import Pages.PageUrl exposing (PageUrl)
 import Route exposing (Route)
 import SharedTemplate exposing (SharedTemplate)
 import UrlPath exposing (UrlPath)
 import View exposing (View)
+import View.Header
 
 
 template : SharedTemplate Msg Model Data msg
 template =
     { init = init
     , update = update
-    , view = view
+    , view = view 
     , data = data
     , subscriptions = subscriptions
     , onPageChange = Nothing
@@ -27,6 +29,7 @@ template =
 type Msg
     = SharedMsg SharedMsg
     | MenuClicked
+    | ToggleMobileMenu
 
 
 type alias Data =
@@ -70,6 +73,9 @@ update msg model =
         MenuClicked ->
             ( { model | showMenu = not model.showMenu }, Effect.none )
 
+        ToggleMobileMenu ->
+           (model , Effect.none)
+
 
 subscriptions : UrlPath -> Model -> Sub Msg
 subscriptions _ _ =
@@ -91,30 +97,16 @@ view :
     -> (Msg -> msg)
     -> View msg
     -> { body : List (Html msg), title : String }
-view sharedData page model toMsg pageView =
+view tableOfContents page model toMsg pageView =
     { body =
-        [ Html.nav []
-            [ Html.button
-                [ Html.Events.onClick MenuClicked ]
-                [ Html.text
-                    (if model.showMenu then
-                        "Close Menu"
-
-                     else
-                        "Open Menu"
-                    )
-                ]
-            , if model.showMenu then
-                Html.ul []
-                    [ Html.li [] [ Html.text "Menu item 1" ]
-                    , Html.li [] [ Html.text "Menu item 2" ]
-                    ]
-
-              else
-                Html.text ""
-            ]
-            |> Html.map toMsg
-        , Html.main_ [] pageView.body
+        [ ((View.Header.view ToggleMobileMenu 123 page.path
+                |> Html.Styled.map toMsg
+           )
+            --:: TableOfContents.view model.showMobileMenu False Nothing tableOfContents
+            :: pageView.body
+          )
+            |> Html.Styled.div []
+            |> Html.Styled.toUnstyled
         ]
     , title = pageView.title
     }

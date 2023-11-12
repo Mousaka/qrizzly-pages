@@ -19,7 +19,7 @@ import Markdown.Renderer
 import MarkdownCodec
 import Pages.Url
 import PagesMsg exposing (PagesMsg)
-import RouteBuilder exposing (App, StatelessRoute)
+import Scaffold.Route as RouteBuilder
 import Shared
 import StructuredData
 import Tailwind.Breakpoints as Bp
@@ -28,6 +28,8 @@ import Tailwind.Utilities as Tw
 import TailwindMarkdownRenderer
 import UrlPath
 import View exposing (View)
+import RouteBuilder exposing (App, StatelessRoute)
+
 
 
 type alias Model =

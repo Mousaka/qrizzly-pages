@@ -2,8 +2,9 @@ module ErrorPage exposing (ErrorPage(..), Model, Msg, head, init, internalError,
 
 import Effect exposing (Effect)
 import Head
-import Html exposing (Html)
+import Html.Styled as Html exposing (Html)
 import Html.Events exposing (onClick)
+import Html.Styled.Events
 import View exposing (View)
 
 
@@ -57,7 +58,7 @@ view error model =
             [ Html.p [] [ Html.text "Page not found. Maybe try another URL?" ]
             , Html.div []
                 [ Html.button
-                    [ onClick Increment
+                    [ Html.Styled.Events.onClick Increment
                     ]
                     [ Html.text
                         (model.count

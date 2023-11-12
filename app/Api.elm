@@ -3,8 +3,8 @@ module Api exposing (routes)
 import ApiRoute exposing (ApiRoute)
 import BackendTask exposing (BackendTask)
 import FatalError exposing (FatalError)
-import Html exposing (Html)
 import Pages.Manifest as Manifest
+import Html.Styled as Html exposing (Html)
 import Route exposing (Route)
 
 

@@ -154,7 +154,8 @@ I mean to aggregate utilites for transforming Blocks in this section.
 -}
 
 import BackendTask exposing (BackendTask)
-import Html exposing (Html)
+import Html.Events
+
 import Html.Attributes as Attr
 import Markdown.Block as Block
 import Markdown.Html
