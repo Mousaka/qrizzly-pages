@@ -1,14 +1,20 @@
-module Route.Index exposing (ActionData, Data, Model, Msg, route)
+module Route.Index exposing (ActionData, Data, Model, Msg, RouteParams, route)
 
 import BackendTask exposing (BackendTask)
+import Content.Blogpost exposing (Metadata)
 import FatalError exposing (FatalError)
 import Head
 import Head.Seo as Seo
-import Html.Styled as Html exposing (Html, text)
+import Html
+import Html.Attributes as Attrs
+import LanguageTag.Country as Country
+import LanguageTag.Language as Language
+import Layout
+import Layout.Blogpost
 import Pages.Url
 import PagesMsg exposing (PagesMsg)
-import Route
 import RouteBuilder exposing (App, StatelessRoute)
+import Settings
 import Shared
 import UrlPath
 import View exposing (View)
@@ -27,7 +33,7 @@ type alias RouteParams =
 
 
 type alias Data =
-    { message : String
+    { blogpostMetadata : List Metadata
     }
 
 
@@ -46,43 +52,29 @@ route =
 
 data : BackendTask FatalError Data
 data =
-    BackendTask.succeed Data
-        |> BackendTask.andMap
-            (BackendTask.succeed "Hello!")
+    Content.Blogpost.allBlogposts
+        |> BackendTask.map (\allBlogposts -> List.map .metadata allBlogposts |> (\allMetadata -> { blogpostMetadata = allMetadata }))
 
 
 head :
     App Data ActionData RouteParams
     -> List Head.Tag
-head app =
-    Seo.summary
-        { canonicalUrlOverride = Nothing
-        , siteName = "elm-pages"
-        , image =
-            { url = [ "images", "icon-png.png" ] |> UrlPath.join |> Pages.Url.fromPath
-            , alt = "elm-pages logo"
-            , dimensions = Nothing
-            , mimeType = Nothing
-            }
-        , description = "Welcome to elm-pages!"
-        , locale = Nothing
-        , title = "elm-pages is running"
-        }
-        |> Seo.website
+head _ =
+    Layout.seoHeaders
 
 
 view :
     App Data ActionData RouteParams
     -> Shared.Model
     -> View (PagesMsg Msg)
-view app shared =
-    { title = "elm-pages is running"
+view app _ =
+    { title = Settings.title
     , body =
-        [ Html.h1 [] [ Html.text "elm-pages is up and running!" ]
-        , Html.p []
-            [ Html.text <| "The message is: " ++ app.data.message
+        --TODO move to layout part
+        [ Html.div [ Attrs.class "space-y-2 pb-8 pt-6 md:space-y-5" ]
+            [ Html.h1 [ Attrs.class "text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14" ] [ Html.text "Latest" ]
+            , Html.p [ Attrs.class "text-lg leading-7 text-gray-500 dark:text-gray-400" ] [ Html.text Settings.subtitle ]
             ]
-        , Route.Blog__Slug_ { slug = "hello" }
-            |> Route.link [] [ text "My blog post" |> Html.toUnstyled ] |> Html.fromUnstyled
+        , Html.div [] <| List.map Layout.Blogpost.viewListItem app.data.blogpostMetadata
         ]
     }

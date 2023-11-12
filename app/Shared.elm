@@ -4,22 +4,20 @@ import BackendTask exposing (BackendTask)
 import Effect exposing (Effect)
 import FatalError exposing (FatalError)
 import Html exposing (Html)
-import Html.Styled
-import Html.Styled.Events
+import Layout
 import Pages.Flags
 import Pages.PageUrl exposing (PageUrl)
 import Route exposing (Route)
 import SharedTemplate exposing (SharedTemplate)
 import UrlPath exposing (UrlPath)
 import View exposing (View)
-import View.Header
 
 
 template : SharedTemplate Msg Model Data msg
 template =
     { init = init
     , update = update
-    , view = view 
+    , view = view
     , data = data
     , subscriptions = subscriptions
     , onPageChange = Nothing
@@ -27,9 +25,7 @@ template =
 
 
 type Msg
-    = SharedMsg SharedMsg
-    | MenuClicked
-    | ToggleMobileMenu
+    = MenuClicked
 
 
 type alias Data =
@@ -58,7 +54,7 @@ init :
             , pageUrl : Maybe PageUrl
             }
     -> ( Model, Effect Msg )
-init flags maybePagePath =
+init _ _ =
     ( { showMenu = False }
     , Effect.none
     )
@@ -67,14 +63,8 @@ init flags maybePagePath =
 update : Msg -> Model -> ( Model, Effect Msg )
 update msg model =
     case msg of
-        SharedMsg globalMsg ->
-            ( model, Effect.none )
-
         MenuClicked ->
             ( { model | showMenu = not model.showMenu }, Effect.none )
-
-        ToggleMobileMenu ->
-           (model , Effect.none)
 
 
 subscriptions : UrlPath -> Model -> Sub Msg
@@ -97,16 +87,7 @@ view :
     -> (Msg -> msg)
     -> View msg
     -> { body : List (Html msg), title : String }
-view tableOfContents page model toMsg pageView =
-    { body =
-        [ ((View.Header.view ToggleMobileMenu 123 page.path
-                |> Html.Styled.map toMsg
-           )
-            --:: TableOfContents.view model.showMobileMenu False Nothing tableOfContents
-            :: pageView.body
-          )
-            |> Html.Styled.div []
-            |> Html.Styled.toUnstyled
-        ]
+view _ _ model toMsg pageView =
+    { body = Layout.view model.showMenu (toMsg MenuClicked) pageView.body
     , title = pageView.title
     }

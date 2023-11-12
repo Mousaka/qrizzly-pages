@@ -6,7 +6,7 @@ module View exposing (View, map)
 
 -}
 
-import Html.Styled as Html exposing (Html)
+import Html exposing (Html)
 
 
 {-| -}

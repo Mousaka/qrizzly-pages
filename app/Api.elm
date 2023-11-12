@@ -1,11 +1,12 @@
-module Api exposing (routes)
+module Api exposing (manifest, routes)
 
 import ApiRoute exposing (ApiRoute)
 import BackendTask exposing (BackendTask)
 import FatalError exposing (FatalError)
+import Html exposing (Html)
 import Pages.Manifest as Manifest
-import Html.Styled as Html exposing (Html)
 import Route exposing (Route)
+import Settings
 
 
 routes :
@@ -19,8 +20,8 @@ routes getStaticRoutes htmlToString =
 manifest : Manifest.Config
 manifest =
     Manifest.init
-        { name = "Site Name"
-        , description = "Description"
+        { name = Settings.title
+        , description = Settings.subtitle
         , startUrl = Route.Index |> Route.toPath
         , icons = []
         }
