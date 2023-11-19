@@ -12,24 +12,24 @@ import LanguageTag.Language as Language
 
 canonicalUrl : String
 canonicalUrl =
-    "https://elm-pages-blog-template.netlify.com"
+    ""
 
 
 locale : Maybe ( Language.Language, Country.Country )
 locale =
-    Just ( Language.en, Country.us )
+    Just ( Language.en, Country.se )
 
 
 title : String
 title =
-    "elm blog"
+    "Qrizzly Pages"
 
 
 subtitle : String
 subtitle =
-    "A blog starter kit created with elm-pages and TailwindCSS"
+    "A Qrizzly" 
 
 
 author : String
 author =
-    "Tomas Latal"
+    "Kristian Lundström"

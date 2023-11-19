@@ -1,39 +1,15 @@
-# Starter kit for blog with elm-pages
+# Qrizzly Pages
 
-## Demo
-
-[https://elm-pages-blog-template.netlify.app/](https://elm-pages-blog-template.netlify.app/)
+A personal website project made with [Elm Pages](https://elm-pages.com/).
 
 ## Goals
 
-- easy to start with
-- easy to style and change
-- prefer elm packages over JS
-- nice default layout that is responsive
+- Get some practical experience with Elm Pages
+- Create a personal tech blog
+- Add back-end features for login with passkey
 
-# Roadmap
+## Credits
 
-- ~~Layout~~ 
-- ~~Blogposts~~ 
-- ~~Tags~~
-- ~~About page~~ 
-- ~~Syntax highlighting of code~~ 
-  ~~- cover all supported languages~~
-- ~~Previous and next links in blogposts~~ 
-- ~~Images~~
-  - ~~main image in header and in SEO ~~
-  - ~~inserting images in body of blogposts~~
-- ~~drafts~~
-  - ~~don't show them on production, but show them on localhost~~
-- ~~support slug override in frontmatter~~
-- ~~Display author of the post~~
-- SEO support refactoring
-- Display information about all authors
-- 404 page
 
-Nice to have later:
 
-- Show authors posts on about page
-- Support blogposts series
-- Edited date
-- Highlight code lines 
+- This project based on [https://github.com/kraklin/elm-pages-blog-starter](https://github.com/kraklin/elm-pages-blog-starter).

@@ -31,7 +31,7 @@ seoHeaders =
             , mimeType = Nothing
             }
         , description = Settings.subtitle
-        , locale = Just ( Language.en, Country.us )
+        , locale = Just ( Language.en, Country.se )
         , title = Settings.title
         }
         |> Seo.website
@@ -220,8 +220,7 @@ view showMenu onMenuToggle body =
                         [ Html.div
                             [ Attrs.class "flex items-center justify-between"
                             ]
-                            [ logo
-                            , Html.div
+                            [  Html.div
                                 [ Attrs.class "h-6 text-2xl font-semibold dark:text-white"
                                 ]
                                 [ Html.text Settings.title ]
