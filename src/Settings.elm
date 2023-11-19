@@ -12,7 +12,7 @@ import LanguageTag.Language as Language
 
 canonicalUrl : String
 canonicalUrl =
-    ""
+    "https://qrizzly-pages.netlify.app"
 
 
 locale : Maybe ( Language.Language, Country.Country )
@@ -27,7 +27,7 @@ title =
 
 subtitle : String
 subtitle =
-    "A Qrizzly" 
+    "Qrizzly's corner on the world wide web." 
 
 
 author : String
