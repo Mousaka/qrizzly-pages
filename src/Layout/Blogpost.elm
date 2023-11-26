@@ -212,7 +212,7 @@ viewBlogpostMetadata metadata =
                             [ Html.text metadata.title ]
                     ]
                 , Html.div
-                    [ Attrs.class "flex flex-wrap"
+                    [ Attrs.class "flex flex-wrap space-x-4 xl:space-x-2"
                     ]
                   <|
                     List.map Layout.Tags.viewTag metadata.tags
