@@ -83,7 +83,7 @@ viewSideMainMenuItem onMenuToggle { label, route } =
         [ Attrs.class "px-12 py-4"
         ]
         [ Route.link
-            [ Attrs.class "text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100"
+            [ Attrs.class "text-2xl font-bold tracking-widest text-gray-900 dark:text-nord-4"
             , Events.onClick onMenuToggle
             ]
             [ Html.text label ]
@@ -126,7 +126,7 @@ viewMenu showMenu onMenuToggle =
                     [ Svg.svg
                         [ SvgAttrs.viewBox "0 0 20 20"
                         , SvgAttrs.fill "currentColor"
-                        , SvgAttrs.class "text-gray-900 dark:text-gray-100 h-8 w-8"
+                        , SvgAttrs.class "text-gray-900 dark:text-nord-4 h-8 w-8"
                         ]
                         [ Svg.path
                             [ SvgAttrs.fillRule "evenodd"
@@ -137,7 +137,7 @@ viewMenu showMenu onMenuToggle =
                         ]
                     ]
                , Html.div
-                    [ Attrs.class "fixed left-0 top-0 z-10 h-full w-full transform opacity-95 dark:opacity-[0.98] bg-white duration-300 ease-in-out dark:bg-gray-950"
+                    [ Attrs.class "fixed left-0 top-0 z-10 h-full w-full transform opacity-95 dark:opacity-[0.98] bg-white duration-300 ease-in-out dark:bg-nord-1"
                     , Attrs.classList
                         [ ( "translate-x-0", showMenu )
                         , ( "translate-x-full", not showMenu )
@@ -154,7 +154,7 @@ viewMenu showMenu onMenuToggle =
                             [ Svg.svg
                                 [ SvgAttrs.viewBox "0 0 20 20"
                                 , SvgAttrs.fill "currentColor"
-                                , SvgAttrs.class "text-gray-900 dark:text-gray-100"
+                                , SvgAttrs.class "text-gray-900 dark:text-nord-4"
                                 ]
                                 [ Svg.path
                                     [ SvgAttrs.fillRule "evenodd"
@@ -191,7 +191,7 @@ view showMenu onMenuToggle body =
                             [ Attrs.class "flex items-center justify-between"
                             ]
                             [  Html.div
-                                [ Attrs.class "h-6 text-2xl font-semibold dark:text-white"
+                                [ Attrs.class "h-6 text-2xl font-semibold dark:text-nord-15"
                                 ]
                                 [ Html.text Settings.title ]
                             ]
@@ -202,7 +202,7 @@ view showMenu onMenuToggle body =
             , Html.main_ [ Attrs.class "w-full mb-auto" ] body
             , Html.footer [ Attrs.class "mt-16 flex flex-col items-center" ]
                 [ Html.div
-                    [ Attrs.class "mb-2 flex space-x-2 text-sm text-gray-500 dark:text-gray-400"
+                    [ Attrs.class "mb-2 flex space-x-2 text-sm text-gray-500 dark: text-nord-10"
                     ]
                     [ Html.div []
                         [ Html.text Settings.author ]
@@ -219,7 +219,7 @@ view showMenu onMenuToggle body =
                         [ Html.text Settings.title ]
                     ]
                 , Html.div
-                    [ Attrs.class "mb-8 text-sm text-gray-500 dark:text-gray-400"
+                    [ Attrs.class "mb-8 text-sm text-gray-500 dark: text-nord-10"
                     ]
                     [ Html.a
                         [ Attrs.target "_blank"

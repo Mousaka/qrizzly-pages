@@ -85,10 +85,10 @@ viewBlogpost { metadata, body, previousPost, nextPost } =
                     [ Attrs.class "sr-only"
                     ]
                     [ Html.text "Authors" ]
-                , Html.dd [ Attrs.class "border-l-4 border-primary-500 pl-4 flex" ]
+                , Html.dd [ Attrs.class "border-l-4 border-nord-13 pl-4 flex" ]
                     [ authorImages blogpostAuthors
                     , Html.div [ Attrs.class "flex flex-col justify-around items-start sm:pl-4" ]
-                        [ Html.span [ Attrs.class "text-lg font-bold text-black dark:text-white" ] [ Html.text <| String.join ", " <| List.map .name blogpostAuthors ]
+                        [ Html.span [ Attrs.class "text-lg font-bold text-black dark: text-nord-5" ] [ Html.text <| String.join ", " <| List.map .name blogpostAuthors ]
                         , Html.div [ Attrs.class "flex space-x-4 text-base" ]
                             [ viewPublishedDate metadata.status
                             , Html.span []
@@ -106,7 +106,7 @@ viewBlogpost { metadata, body, previousPost, nextPost } =
                 ]
                 [ Html.div
                     []
-                    [ Html.h1 [ Attrs.class "mt-8 pb-4 font-bold text-3xl md:text-5xl text-gray-900 dark:text-gray-100" ]
+                    [ Html.h1 [ Attrs.class "mt-8 pb-4 font-bold text-3xl md:text-5xl text-gray-900 dark:text-nord-6" ]
                         [ Html.text metadata.title
                         ]
                     , authorsView
@@ -179,12 +179,12 @@ viewPublishedDate status =
                     ]
                     [ Html.text "Published on" ]
                 , Html.dd
-                    [ Attrs.class "leading-6 text-gray-500 dark:text-gray-400"
+                    [ Attrs.class "leading-6 text-gray-500 dark:text-nord-9"
                     ]
                     [ Html.time
                         [ Attrs.datetime <| Date.toIsoString date
                         ]
-                        [ Html.text <| Date.format "d. MMM YYYY" date ]
+                        [ Html.text <| Date.format "d MMM YYYY" date ]
                     ]
                 ]
 
@@ -207,7 +207,7 @@ viewBlogpostMetadata metadata =
                     ]
                     [ Route.Blog__Slug_ { slug = metadata.slug }
                         |> Route.link
-                            [ Attrs.class "text-gray-900 hover:underline decoration-primary-600 dark:text-gray-100"
+                            [ Attrs.class "text-gray-900 hover:underline decoration-primary-600 dark:text-nord-4"
                             ]
                             [ Html.text metadata.title ]
                     ]
@@ -220,7 +220,7 @@ viewBlogpostMetadata metadata =
             , Html.Extra.viewMaybe
                 (\description ->
                     Html.div
-                        [ Attrs.class "prose max-w-none text-gray-500 dark:text-gray-400"
+                        [ Attrs.class "prose max-w-none text-gray-500 dark: text-nord-9"
                         ]
                         [ Html.text description ]
                 )
@@ -248,7 +248,7 @@ viewListItem metadata =
                             ]
                             [ Route.Blog__Slug_ { slug = metadata.slug }
                                 |> Route.link
-                                    [ Attrs.class "text-gray-900 hover:underline decoration-primary-600 dark:text-gray-100"
+                                    [ Attrs.class "text-gray-900 hover:underline decoration-nord-9 dark:text-nord-5"
                                     ]
                                     [ Html.text metadata.title ]
                             ]
@@ -260,7 +260,7 @@ viewListItem metadata =
                     , Html.Extra.viewMaybe
                         (\description ->
                             Html.div
-                                [ Attrs.class "prose max-w-none text-gray-500 dark:text-gray-400"
+                                [ Attrs.class "prose max-w-none text-gray-500 dark:text-nord-9"
                                 ]
                                 [ Html.text description ]
                         )
@@ -271,7 +271,7 @@ viewListItem metadata =
                     ]
                     [ Route.Blog__Slug_ { slug = metadata.slug }
                         |> Route.link
-                            [ Attrs.class "text-primary-700 dark:text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
+                            [ Attrs.class "text-primary-700 dark:text-nord-8 hover:text-primary-600 dark:hover:text-nord-4"
                             , Attrs.attribute "aria-label" ("Read more about \"" ++ metadata.title ++ "\"")
                             ]
                             [ Html.text "Read more →" ]

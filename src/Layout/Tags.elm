@@ -14,7 +14,7 @@ viewTagWithCount { slug, title, count } =
         ]
         [ Route.Tags__Slug_ { slug = String.Normalize.slug slug }
             |> Route.link
-                [ Attrs.class "text-sm font-medium uppercase text-primary-700 dark:text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
+                [ Attrs.class tagClasses
                 , Attrs.attribute "aria-label" ("View posts tagged " ++ title)
                 ]
                 [ Html.text title
@@ -25,12 +25,14 @@ viewTagWithCount { slug, title, count } =
                 ]
         ]
 
+tagClasses : String
+tagClasses = "text-sm font-medium uppercase text-primary-700 dark:text-nord-12 hover:text-primary-600 dark:hover:text-nord-13"
 
 viewTag : String -> Html msg
 viewTag slug =
     Route.Tags__Slug_ { slug = String.Normalize.slug slug }
         |> Route.link
-            [ Attrs.class "text-sm font-medium uppercase text-primary-700 dark:text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
+            [ Attrs.class tagClasses
             ]
             [ Html.text slug ]
 
@@ -47,7 +49,7 @@ view tags =
                 [ Attrs.class "space-x-2 pb-8 pt-6 md:space-y-5"
                 ]
                 [ Html.h1
-                    [ Attrs.class "text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:border-r-2 md:px-6 md:text-6xl md:leading-14"
+                    [ Attrs.class "text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-nord-5 sm:text-4xl sm:leading-10 md:border-r-2 md:px-6 md:text-6xl md:leading-14"
                     ]
                     [ Html.text "Tags" ]
                 ]

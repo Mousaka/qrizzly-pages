@@ -85,7 +85,7 @@ socialsView socials =
                     ]
                     [ Html.text name ]
                 , icon name Phosphor.Regular
-                    |> Phosphor.withClass "fill-current text-gray-500 hover:text-primary-500 dark:text-gray-200 dark:hover:text-primary-400 h-8 w-8"
+                    |> Phosphor.withClass "fill-current text-gray-500 hover:text-primary-500 dark:text-nord-7/70 dark:hover:text-nord-7 h-8 w-8"
                     |> Phosphor.toHtml []
                 ]
     in
@@ -98,13 +98,13 @@ socialsView socials =
 view : Author -> Html msg
 view author =
     Html.div
-        [ Attrs.class "divide-y divide-gray-200 dark:divide-gray-700"
+        [ Attrs.class "divide-y divide-gray-200 dark:divide-nord-9"
         ]
         [ Html.div
             [ Attrs.class "space-y-2 pb-8 pt-6 md:space-y-5"
             ]
             [ Html.h1
-                [ Attrs.class "text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14"
+                [ Attrs.class "text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-nord-5 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14"
                 ]
                 [ Html.text "About" ]
             ]
@@ -133,7 +133,7 @@ view author =
                 , Html.Extra.viewMaybe
                     (\occupation ->
                         Html.div
-                            [ Attrs.class "text-gray-500 dark:text-gray-400"
+                            [ Attrs.class "text-gray-500 dark: text-nord-9"
                             ]
                             [ Html.text occupation ]
                     )
@@ -141,7 +141,7 @@ view author =
                 , Html.Extra.viewMaybe
                     (\company ->
                         Html.div
-                            [ Attrs.class "text-gray-500 dark:text-gray-400"
+                            [ Attrs.class "text-gray-500 dark: text-nord-9"
                             ]
                             [ Html.text company ]
                     )
