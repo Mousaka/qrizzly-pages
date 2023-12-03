@@ -305,20 +305,20 @@ viewPostList tags metadata selectedTag =
                         |> Route.link
                             []
                             [ Html.h3
-                                [ Attrs.class "text-gray-900 dark:text-gray-100 hover:text-primary-500 font-bold uppercase"
+                                [ Attrs.class "text-gray-900 dark:text-gray-100 hover:dark:text-nord-12 font-bold uppercase"
                                 ]
                                 [ Html.text "All Posts" ]
                             ]
 
                 Nothing ->
                     Html.h3
-                        [ Attrs.class "text-primary-700 dark:text-primary-500 font-bold uppercase"
+                        [ Attrs.class "text-primary-700 dark:text-nord-12 font-bold uppercase"
                         ]
                         [ Html.text "All Posts" ]
     in
     [ Html.div [ Attrs.class "pb-6 pt-6" ] [ header ]
     , Html.div [ Attrs.class "flex sm:space-x-2 md:space-x-12" ]
-        [ Html.div [ Attrs.class "hidden max-h-screen h-full sm:flex flex-wrap bg-gray-50 dark:bg-gray-900/70 shadow-md pt-5 dark:shadow-gray-800/40 rounded min-w-[280px] max-w-[280px] overflow-auto" ]
+        [ Html.div [ Attrs.class "hidden max-h-screen h-full sm:flex flex-wrap bg-gray-50 dark:bg-nord-1 shadow-md pt-5 dark:shadow-gray-800/40 rounded min-w-[280px] max-w-[280px] overflow-auto" ]
             [ Html.div
                 [ Attrs.class "py-4 px-6"
                 ]
@@ -331,7 +331,7 @@ viewPostList tags metadata selectedTag =
                                 ]
                                 [ Route.Tags__Slug_ { slug = tag.slug }
                                     |> Route.link
-                                        [ Attrs.class "py-2 px-3 uppercase text-sm font-medium text-gray-500 dark:text-gray-300 hover:text-primary-500 dark:hover:text-primary-500"
+                                        [ Attrs.class "py-2 px-3 uppercase text-sm font-medium text-gray-500 dark:text-gray-300 hover:dark:text-nord-12 dark:hover:text-primary-500"
                                         , Attrs.classList [ ( "text-primary-700 dark:text-primary-500", Just tag.slug == Maybe.map .slug selectedTag ) ]
                                         , Attrs.attribute "aria-label" <| "View posts tagged " ++ tag.title
                                         ]
