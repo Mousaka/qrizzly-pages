@@ -90,7 +90,7 @@ viewSideMainMenuItem onMenuToggle { label, route } =
             route
         ]
 
-
+-- Basically unused after the background pictures were removed.
 background : Html msg
 background =
     Html.div
@@ -99,37 +99,7 @@ background =
         [ Html.div
             [ Attrs.class "w-[108rem] flex-none flex justify-end"
             ]
-            [ Html.node "picture"
-                []
-                [ Html.source
-                    [ Attrs.attribute "srcset" "/media/docs@30.8b9a76a2.avif"
-                    , Attrs.type_ "image/avif"
-                    ]
-                    []
-                , Html.img
-                    [ Attrs.src "/media/docs@tinypng.d9e4dcdc.png"
-                    , Attrs.alt ""
-                    , Attrs.class "w-[71.75rem] flex-none max-w-none dark:hidden"
-                    , Attrs.attribute "decoding" "async"
-                    ]
-                    []
-                ]
-            , Html.node "picture"
-                []
-                [ Html.source
-                    [ Attrs.attribute "srcset" "/media/docs-dark@30.1a9f8cbf.avif"
-                    , Attrs.type_ "image/avif"
-                    ]
-                    []
-                , Html.img
-                    [ Attrs.src "/media/docs-dark@tinypng.1bbe175e.png"
-                    , Attrs.alt ""
-                    , Attrs.class "w-[90rem] flex-none max-w-none hidden dark:block"
-                    , Attrs.attribute "decoding" "async"
-                    ]
-                    []
-                ]
-            ]
+            []
         ]
 
 
