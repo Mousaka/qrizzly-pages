@@ -5,8 +5,8 @@ import Head.Seo as Seo
 import Html exposing (Html)
 import Html.Attributes as Attrs
 import Html.Events as Events
-import LanguageTag.Country as Country
 import LanguageTag.Language as Language
+import LanguageTag.Region as Region
 import Pages.Url
 import Route exposing (Route)
 import Settings
@@ -31,7 +31,7 @@ seoHeaders =
             , mimeType = Nothing
             }
         , description = Settings.subtitle
-        , locale = Just ( Language.en, Country.se )
+        , locale = Just ( Language.en, Region.se )
         , title = Settings.title
         }
         |> Seo.website
@@ -90,7 +90,11 @@ viewSideMainMenuItem onMenuToggle { label, route } =
             route
         ]
 
+
+
 -- Basically unused after the background pictures were removed.
+
+
 background : Html msg
 background =
     Html.div
@@ -190,7 +194,7 @@ view showMenu onMenuToggle body =
                         [ Html.div
                             [ Attrs.class "flex items-center justify-between"
                             ]
-                            [  Html.div
+                            [ Html.div
                                 [ Attrs.class "h-6 text-2xl font-semibold dark:text-nord-15"
                                 ]
                                 [ Html.text Settings.title ]
