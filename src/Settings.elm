@@ -6,8 +6,8 @@ module Settings exposing
     , title
     )
 
-import LanguageTag.Country as Country
 import LanguageTag.Language as Language
+import LanguageTag.Region as Region
 
 
 canonicalUrl : String
@@ -15,9 +15,9 @@ canonicalUrl =
     "https://qrizzly-pages.netlify.app"
 
 
-locale : Maybe ( Language.Language, Country.Country )
+locale : Maybe ( Language.Language, Region.Region )
 locale =
-    Just ( Language.en, Country.se )
+    Just ( Language.en, Region.se )
 
 
 title : String
@@ -27,7 +27,7 @@ title =
 
 subtitle : String
 subtitle =
-    "Qrizzly's corner on the world wide web." 
+    "Qrizzly's corner on the world wide web."
 
 
 author : String
