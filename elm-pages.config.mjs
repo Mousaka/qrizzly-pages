@@ -2,7 +2,9 @@ import { defineConfig } from "vite";
 import adapter from "elm-pages/adapter/netlify.js";
 
 export default {
-  vite: defineConfig({}),
+  vite: defineConfig({
+    assetsInclude: ['/elm-pages.js']
+  }),
   adapter,
   headTagsTemplate(context) {
     return `
