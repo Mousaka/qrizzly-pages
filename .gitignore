@@ -6,3 +6,4 @@ functions/render/elm-pages-cli.js
 .DS_Store
 .idea/
 functions/
+codegen/Gen/
