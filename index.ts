@@ -1,4 +1,4 @@
-import init, {eval_code} from './public/scripts/scryer/scryer_prolog.js'
+import init, {eval_code} from './dist/scripts/scryer/scryer_prolog.js'
 // import * as scryer_wasm from './public/scripts/scryer/scryer_prolog_bg.wasm';
 
 type ElmPagesInit = {

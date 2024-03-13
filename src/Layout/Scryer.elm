@@ -5,6 +5,8 @@ import Head
 import Head.Seo as Seo
 import Html exposing (Html)
 import Html.Attributes as Attrs
+import Html.Events exposing (onClick)
+import Html.Events.Extra exposing (onChange)
 import Html.Extra
 import Layout.Markdown as Markdown
 import Pages.Url
@@ -37,8 +39,8 @@ seoHeaders author =
         |> Seo.website
 
 
-view : { code : String, evalRes : String } -> Html msg
-view { code, evalRes } =
+view : { code : String, evalRes : String, updateCode : String -> msg, runCode : msg } -> Html msg
+view config =
     Html.div
         [ Attrs.class "divide-y divide-gray-200 dark:divide-nord-9"
         ]
@@ -54,8 +56,15 @@ view { code, evalRes } =
             [ Attrs.class "items-start space-y-2 xl:grid xl:grid-cols-3 xl:gap-x-8 xl:space-y-0"
             ]
             [ Html.div
-                [ Attrs.class "prose max-w-none pb-8 pt-8 dark:prose-invert xl:col-span-2"
+                [ Attrs.class "max-w-none pb-8 pt-8 dark:prose xl:col-span-2 h-96"
                 ]
-                [ Html.text "Heheh" ]
+                [ Html.textarea
+                    [ Attrs.class "w-full h-full dark:bg-nord-1 dark:text-nord-7 resize-none"
+                    , Attrs.value config.code
+                    , onChange config.updateCode
+                    ]
+                    []
+                , Html.button [ Attrs.class "bg-nord-13", onClick config.runCode ] [ Html.text "Run code" ]
+                ]
             ]
         ]
