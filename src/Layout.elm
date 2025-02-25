@@ -213,7 +213,7 @@ view showMenu onMenuToggle body =
                     , Html.div []
                         [ Html.text "•" ]
                     , Html.div []
-                        [ Html.text "© 2023" ]
+                        [ Html.text "© 2025" ]
                     , Html.div []
                         [ Html.text "•" ]
                     , Html.a
