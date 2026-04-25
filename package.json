@@ -19,6 +19,7 @@
     "vite": "^5.0.11"
   },
   "dependencies": {
-    "@netlify/functions": "^1.4.0"
+    "@netlify/functions": "^1.4.0",
+    "lamdera": "^0.19.1-1.4.0"
   }
 }
