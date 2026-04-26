@@ -101,7 +101,7 @@ background =
         [ Attrs.class "absolute z-20 top-0 inset-x-0 flex justify-center overflow-hidden pointer-events-none"
         ]
         [ Html.div
-            [ Attrs.class "w-[108rem] flex-none flex justify-end"
+            [ Attrs.class "w-432 flex-none flex justify-end"
             ]
             []
         ]
