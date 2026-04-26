@@ -5,6 +5,7 @@ import Content.Blogpost exposing (Metadata, TagWithCount)
 import FatalError exposing (FatalError)
 import Head
 import Head.Seo as Seo
+import Html
 import Layout
 import Layout.Blogpost
 import Pages.Url
@@ -70,5 +71,5 @@ view :
 view app _ =
     { title = "Blog"
     , body =
-        Layout.Blogpost.viewPostList app.data.tags app.data.blogposts Nothing
+        [ View.freeze <| Html.div [] (Layout.Blogpost.viewPostList app.data.tags app.data.blogposts Nothing) ]
     }

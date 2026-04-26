@@ -111,5 +111,5 @@ view :
     -> View (PagesMsg Msg)
 view app _ =
     { title = app.data.blogpost.metadata.title
-    , body = [ Layout.Blogpost.viewBlogpost app.data.blogpost ]
+    , body = [ View.freeze (Layout.Blogpost.viewBlogpost app.data.blogpost) ]
     }
