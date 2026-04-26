@@ -1,9 +1,8 @@
-module Layout.Markdown exposing (blogpostToHtml, toHtml)
+module Layout.Markdown exposing (blocksToHtml, toHtmlBlocks)
 
 import Html exposing (Html)
 import Html.Attributes as Attrs
 import Markdown.Block as Block
-import Markdown.Parser
 import Markdown.Renderer exposing (defaultHtmlRenderer)
 import Parser exposing (DeadEnd)
 import Phosphor
@@ -53,9 +52,8 @@ syntaxHighlight codeBlock =
             else
                 codeBlock.body
     in
-    Html.div [ Attrs.class "no-prose" ]
-        [ SyntaxHighlight.useTheme SyntaxHighlight.oneDark
-        , language codeBlock.language sanitiseCodeBlock
+    Html.div [ Attrs.class "no-prose mt-4" ]
+        [ language codeBlock.language sanitiseCodeBlock
             |> Result.map (SyntaxHighlight.toBlockHtml (Just 1))
             |> Result.withDefault
                 (Html.pre [] [ Html.code [] [ Html.text sanitiseCodeBlock ] ])
@@ -109,35 +107,22 @@ blogpostRenderer =
                             |> Phosphor.toHtml [ SvgAttrs.class "text-primary-300 inline-block text-xl ml-2" ]
                         ]
                     ]
+        , codeSpan =
+            \context ->
+                Html.code [ Attrs.class "not-prose" ] [ Html.text context ]
         , codeBlock =
             \block ->
                 syntaxHighlight block
     }
 
 
-blogpostToHtml : String -> List (Html msg)
-blogpostToHtml markdownString =
-    markdownString
-        |> Markdown.Parser.parse
-        |> Result.mapError (\_ -> "Markdown error.")
-        |> Result.andThen
-            (\blocks ->
-                Markdown.Renderer.render
-                    blogpostRenderer
-                    blocks
-            )
-        |> Result.withDefault [ Html.text "failed to read markdown" ]
+blocksToHtml : List Block.Block -> List (Html msg)
+blocksToHtml blocks =
+    Markdown.Renderer.render blogpostRenderer blocks
+        |> Result.withDefault [ Html.text "failed to render markdown" ]
 
 
-toHtml : String -> List (Html msg)
-toHtml markdownString =
-    markdownString
-        |> Markdown.Parser.parse
-        |> Result.mapError (\_ -> "Markdown error.")
-        |> Result.andThen
-            (\blocks ->
-                Markdown.Renderer.render
-                    renderer
-                    blocks
-            )
-        |> Result.withDefault [ Html.text "failed to read markdown" ]
+toHtmlBlocks : List Block.Block -> List (Html msg)
+toHtmlBlocks blocks =
+    Markdown.Renderer.render renderer blocks
+        |> Result.withDefault [ Html.text "failed to render markdown" ]
