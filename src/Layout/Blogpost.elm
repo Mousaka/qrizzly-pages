@@ -12,6 +12,7 @@ import Html.Extra
 import Layout.Markdown as Markdown
 import Layout.Tags
 import Route
+import SyntaxHighlight
 
 
 
@@ -104,7 +105,8 @@ viewBlogpost { metadata, body, previousPost, nextPost } =
             Html.div
                 [ Attrs.class "max-w-[65ch] m-auto space-y-1 xl:text-xl dark:border-gray-700"
                 ]
-                [ Html.div
+                [ SyntaxHighlight.useTheme SyntaxHighlight.oneDark
+                , Html.div
                     []
                     [ Html.h1 [ Attrs.class "mt-8 pb-4 font-bold text-3xl md:text-5xl text-gray-900 dark:text-nord-6" ]
                         [ Html.text metadata.title
@@ -155,7 +157,7 @@ viewBlogpost { metadata, body, previousPost, nextPost } =
             metadata.description
         , Html.article
             [ Attrs.class "mx-auto prose lg:prose-xl dark:prose-invert" ]
-            (Markdown.blogpostToHtml body)
+            (Markdown.blocksToHtml body)
         , Html.div
             [ Attrs.class "mt-8 border-t grid grid-cols-1 text-sm font-medium sm:grid-cols-2 sm:text-base" ]
             [ previous, next ]
@@ -184,7 +186,7 @@ viewPublishedDate status =
                     [ Html.time
                         [ Attrs.datetime <| Date.toIsoString date
                         ]
-                        [ Html.text <| Date.format "d MMM YYYY" date ]
+                        [ Html.text <| Date.format "d. MMM yyyy" date ]
                     ]
                 ]
 

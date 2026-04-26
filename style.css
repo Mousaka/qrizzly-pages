@@ -55,6 +55,15 @@ body {
   @apply antialiased text-slate-500 dark:text-nord-4 bg-white dark:bg-nord-0
 }
 
+/* Make <pre> elements not contribute to the width calculation of parents.
+ * Instead, let them be as wide as the parent.
+ * This allows a horizontal scrollbar to appear instead of making the whole
+ * article wider, overflowing its parent, and going offscreen on phones.
+ */
+pre {
+  contain: inline-size;
+}
+
 /* Elm Syntax Highlight CSS */
 pre.elmsh {
   padding: 10px;
@@ -65,6 +74,12 @@ pre.elmsh {
 
 code.elmsh {
   padding: 0;
+}
+
+code.not-prose {
+  border-radius: .3em;
+  background: color-mix(in srgb, var(--color-nord-13) 20%, transparent);
+  padding: .15em .2em .05em;
 }
 
 .elmsh-line:before {
